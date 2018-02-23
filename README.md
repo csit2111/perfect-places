@@ -1,1 +1,3 @@
-#App for finding some special places in other cities
+# Perfect places
+
+App for finding some intersting places in cities
