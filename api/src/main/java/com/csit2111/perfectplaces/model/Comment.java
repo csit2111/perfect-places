@@ -14,17 +14,17 @@ public class Comment {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "comments")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private Place place;
 
     private int rateValue;
 
-    //TODO Error:(24, 13) 'One To One' attribute type should not be 'long'
     @OneToOne
+    //@JoinTable(name = "place")
     @JoinColumn(name = "id")
-    private long userId;
+    private User userId;
 
-    public Comment(String description, Place place, int rateValue, long userId) {
+    public Comment(String description, Place place, int rateValue, User userId) {
         this.description = description;
         this.place = place;
         this.rateValue = rateValue;
@@ -66,11 +66,11 @@ public class Comment {
         this.rateValue = rateValue;
     }
 
-    public long getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 }

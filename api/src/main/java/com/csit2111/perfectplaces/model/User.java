@@ -18,7 +18,7 @@ public class User {
     private String email;
 
     @OneToOne(mappedBy = "userId")
-    private long commentId;
+    private Comment commentId;
 
     public User() {
     }

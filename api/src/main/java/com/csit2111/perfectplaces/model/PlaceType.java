@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "placeType")
+@Table(name = "place_type")
 public class PlaceType {
 
     @Id

@@ -30,10 +30,10 @@ public class Place {
 
     private String link;
 
-    @OneToMany(mappedBy = "commentId")
+    @OneToMany(mappedBy = "place")
     private Collection<Comment> comments;
 
-    @OneToMany(mappedBy = "photoId")
+    @OneToMany(mappedBy = "placeId")
     private Collection<Photo> photos;
 
     public Place() {

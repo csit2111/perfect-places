@@ -4,7 +4,7 @@ package com.csit2111.perfectplaces.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "placeTag")
+@Table(name = "place_tag")
 public class PlaceTag {
 
     @Id
