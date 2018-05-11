@@ -18,15 +18,17 @@ public class User {
     private String email;
 
     @OneToOne(mappedBy = "userId")
-    private long commentId;
+    private Comment commentId;
+
 
     public User() {
     }
 
-    public User(long id, String login, String password) {
-        this.id = id;
+    public User(String login, String password, String email, Comment commentId) {
         this.login = login;
         this.password = password;
+        this.email = email;
+        this.commentId = commentId;
     }
 
     public long getId() {
@@ -52,5 +54,21 @@ public class User {
     public void setPassword(String password) {
         password.hashCode();
         this.password = password;
+    }
+
+    public Comment getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Comment commentId) {
+        this.commentId = commentId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

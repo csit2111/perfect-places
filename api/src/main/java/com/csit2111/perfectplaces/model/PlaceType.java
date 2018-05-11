@@ -1,12 +1,9 @@
 package com.csit2111.perfectplaces.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "placeType")
+@Table(name = "place_type")
 public class PlaceType {
 
     @Id
@@ -15,12 +12,15 @@ public class PlaceType {
 
     private String name;
 
+    @OneToOne(mappedBy = "typeId")
+    PlaceTag tag;
+
     public PlaceType() {
     }
 
-    public PlaceType(long id, String name) {
-        this.id = id;
+    public PlaceType(String name, PlaceTag tag) {
         this.name = name;
+        this.tag = tag;
     }
 
     public long getId() {
@@ -37,5 +37,13 @@ public class PlaceType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public PlaceTag getTag() {
+        return tag;
+    }
+
+    public void setTag(PlaceTag tag) {
+        this.tag = tag;
     }
 }
