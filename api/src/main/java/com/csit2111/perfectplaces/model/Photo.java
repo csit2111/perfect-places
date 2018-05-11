@@ -20,9 +20,9 @@ public class Photo {
     public Photo() {
     }
 
-    public Photo(String imagePath, Place placeId) {
+    public Photo(String imagePath) {
         this.imagePath = imagePath;
-        this.placeId = placeId;
+        //this.placeId = placeId;
     }
 
     public long getId() {
