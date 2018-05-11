@@ -17,18 +17,17 @@ public class User {
 
     private String email;
 
-    @OneToOne(mappedBy = "userId")
-    private Comment commentId;
-
+    @OneToOne(mappedBy = "user")
+    private Comment comment;
 
     public User() {
     }
 
-    public User(String login, String password, String email, Comment commentId) {
+    public User(String login, String password, String email, Comment comment) {
         this.login = login;
         this.password = password;
         this.email = email;
-        this.commentId = commentId;
+        this.comment = comment;
     }
 
     public long getId() {
@@ -56,19 +55,19 @@ public class User {
         this.password = password;
     }
 
-    public Comment getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(Comment commentId) {
-        this.commentId = commentId;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 }

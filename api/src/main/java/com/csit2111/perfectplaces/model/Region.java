@@ -9,9 +9,9 @@ public class Region {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
 
-    @OneToOne(mappedBy = "regionId")
+    @OneToOne(mappedBy = "region")
     private Place place;
 
     private String name;
@@ -19,8 +19,7 @@ public class Region {
     public Region() {
     }
 
-    public Region(Place place, String name) {
-        this.place = place;
+    public Region(String name) {
         this.name = name;
     }
 
@@ -30,6 +29,14 @@ public class Region {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public String getName() {

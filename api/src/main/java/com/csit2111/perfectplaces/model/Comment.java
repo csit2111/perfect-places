@@ -14,32 +14,24 @@ public class Comment {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "placeId")
     private Place place;
 
     private int rateValue;
 
     @OneToOne
-    //@JoinTable(name = "place")
-    @JoinColumn(name = "id")
-    private User userId;
+    @MapsId
+    @JoinColumn(name = "userId")
+    private User user;
 
     public Comment(String description, Place place, int rateValue, User userId) {
         this.description = description;
         this.place = place;
         this.rateValue = rateValue;
-        this.userId = userId;
+        this.user = userId;
     }
 
     public Comment() {
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public long getId() {
@@ -48,6 +40,14 @@ public class Comment {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Place getPlace() {
@@ -66,11 +66,11 @@ public class Comment {
         this.rateValue = rateValue;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
