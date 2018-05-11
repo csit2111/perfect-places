@@ -18,9 +18,11 @@ public class Place {
 
     @OneToOne
     @JoinColumn(name = "id")
-    private long regionId;
+    private Region regionId;
 
-    private long tagId;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private PlaceTag tagId;
 
     private  float latitude;
 
@@ -39,7 +41,7 @@ public class Place {
     public Place() {
     }
 
-    public Place(String name, String description, long regionId, long tagId, float latitude, float longitude, String contacts, String link, Collection<Comment> comments, Collection<Photo> photos) {
+    public Place(String name, String description, Region regionId, PlaceTag tagId, float latitude, float longitude, String contacts, String link, Collection<Comment> comments, Collection<Photo> photos) {
         this.name = name;
         this.description = description;
         this.regionId = regionId;
@@ -76,19 +78,19 @@ public class Place {
         this.name = name;
     }
 
-    public long getRegionId() {
+    public Region getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(long regionId) {
+    public void setRegionId(Region regionId) {
         this.regionId = regionId;
     }
 
-    public long getTagId() {
+    public PlaceTag getTagId() {
         return tagId;
     }
 
-    public void setTagId(long tagId) {
+    public void setTagId(PlaceTag tagId) {
         this.tagId = tagId;
     }
 

@@ -1,10 +1,7 @@
 package com.csit2111.perfectplaces.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "region")
@@ -12,11 +9,19 @@ public class Region {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
+
+    @OneToOne(mappedBy = "regionId")
+    private Place place;
 
     private String name;
 
     public Region() {
+    }
+
+    public Region(Place place, String name) {
+        this.place = place;
+        this.name = name;
     }
 
     public long getId() {

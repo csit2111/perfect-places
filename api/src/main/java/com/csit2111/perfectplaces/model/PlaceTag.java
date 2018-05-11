@@ -15,15 +15,18 @@ public class PlaceTag {
 
     @OneToOne
     @JoinColumn(name = "id")
-    private long typeId;
+    private PlaceType typeId;
+
+    @OneToOne(mappedBy = "tagId")
+    private Place place;
 
     public PlaceTag() {
     }
 
-    public PlaceTag(long id, String name, long typeId) {
-        this.id = id;
+    public PlaceTag(String name, PlaceType typeId, Place place) {
         this.name = name;
         this.typeId = typeId;
+        this.place = place;
     }
 
     public long getId() {
@@ -42,11 +45,19 @@ public class PlaceTag {
         this.name = name;
     }
 
-    public long getTypeId() {
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    public PlaceType getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(long typeId) {
+    public void setTypeId(PlaceType typeId) {
         this.typeId = typeId;
     }
 }
