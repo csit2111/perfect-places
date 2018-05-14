@@ -19,8 +19,8 @@ public class Region {
     public Region() {
     }
 
-    public Region(Place place, String name) {
-        this.place = place;
+    public Region(String name) {
+       // this.place = place;
         this.name = name;
     }
 
