@@ -11,10 +11,13 @@ public class User {
     @GeneratedValue
     private long id;
 
+    @Column(name = "login")
     private String login;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
     private String email;
 
     @OneToOne(mappedBy = "userId")
@@ -52,7 +55,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-        password.hashCode();
         this.password = password;
     }
 

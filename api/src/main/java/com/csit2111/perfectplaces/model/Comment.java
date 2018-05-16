@@ -11,27 +11,31 @@ public class Comment {
     @GeneratedValue
     private long id;
 
+    @Column(name = "description")
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "id", insertable = false, updatable = false)
     private Place place;
 
+    @Column(name = "rate_value")
     private int rateValue;
 
     @OneToOne
     //@JoinTable(name = "place")
     @JoinColumn(name = "id")
+   // @Column(name = "user_id")
     private User userId;
+
+    public Comment() {
+    }
+
 
     public Comment(String description, Place place, int rateValue, User userId) {
         this.description = description;
         this.place = place;
         this.rateValue = rateValue;
         this.userId = userId;
-    }
-
-    public Comment() {
     }
 
     public String getDescription() {

@@ -8,12 +8,13 @@ import javax.persistence.*;
 public class Region {
 
     @Id
-    @GeneratedValue
-    private Long id;
+   // @GeneratedValue
+    private long id;
 
     @OneToOne(mappedBy = "regionId")
     private Place place;
 
+    @Column(name = "name")
     private String name;
 
     public Region() {

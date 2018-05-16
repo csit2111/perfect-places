@@ -11,6 +11,7 @@ public class Photo {
     @GeneratedValue
     private long id;
 
+    @Column(name = "image_path")
     private String imagePath;
 
     @ManyToOne

@@ -10,10 +10,11 @@ public class PlaceType {
     @GeneratedValue
     private long id;
 
+    @Column(name = "place_type")
     private String name;
 
     @OneToOne(mappedBy = "typeId")
-    PlaceTag tag;
+    private PlaceTag tag;
 
     public PlaceType() {
     }

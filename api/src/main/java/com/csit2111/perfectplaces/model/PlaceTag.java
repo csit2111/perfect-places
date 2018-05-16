@@ -8,9 +8,10 @@ import javax.persistence.*;
 public class PlaceTag {
 
     @Id
-    @GeneratedValue
+   // @GeneratedValue
     private long id;
 
+    @Column(name = "name")
     private String name;
 
     @OneToOne
