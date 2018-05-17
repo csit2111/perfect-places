@@ -2,10 +2,12 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue
@@ -20,18 +22,21 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(mappedBy = "userId")
-    private Comment commentId;
+    /*OneToOne
+    @JoinColumn(name = "user_id")
+    private Comment commentId;*/
+    @OneToMany(mappedBy = "userId")
+    private Collection<Comment> comments;
 
 
     public User() {
     }
 
-    public User(String login, String password, String email, Comment commentId) {
+    public User(String login, String password, String email, Collection<Comment> comments) {
         this.login = login;
         this.password = password;
         this.email = email;
-        this.commentId = commentId;
+        this.comments = comments;
     }
 
     public long getId() {
@@ -58,12 +63,12 @@ public class User {
         this.password = password;
     }
 
-    public Comment getCommentId() {
-        return commentId;
+    public Collection<Comment> getComments() {
+        return comments;
     }
 
-    public void setCommentId(Comment commentId) {
-        this.commentId = commentId;
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getEmail() {

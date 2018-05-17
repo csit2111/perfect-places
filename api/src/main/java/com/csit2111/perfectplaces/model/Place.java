@@ -2,11 +2,12 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 @Table(name = "place")
-public class Place {
+public class Place implements Serializable {
 
     @Id
     @GeneratedValue
@@ -18,11 +19,11 @@ public class Place {
     @Column(name = "description")
     private String description;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Region regionId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private PlaceTag tagId;
 
