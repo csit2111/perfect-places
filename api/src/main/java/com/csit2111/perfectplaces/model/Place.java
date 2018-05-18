@@ -1,6 +1,8 @@
 package com.csit2111.perfectplaces.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -17,12 +19,10 @@ public class Place {
     private String description;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "regionId")
     private Region region;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "tagId")
     private PlaceTag tag;
 

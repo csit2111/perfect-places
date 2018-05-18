@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
-   //@Query("select p from place where p.name = :name")
-    //Place findPlaceByName(@Param("name") String name);
+   //@Query("select p from place where p.id = :id")
+   //Place findPlaceById(@Param("id") long id);
 }

@@ -1,6 +1,6 @@
 package com.csit2111.perfectplaces.model;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +14,6 @@ public class PlaceTag {
     private String name;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "typeId")
     private PlaceType type;
 
@@ -54,6 +53,7 @@ public class PlaceTag {
         this.type = type;
     }
 
+    @JsonIgnore
     public Place getPlace() {
         return place;
     }
