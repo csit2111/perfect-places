@@ -1,15 +1,18 @@
 package com.csit2111.perfectplaces.controller;
 
 import com.csit2111.perfectplaces.model.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.csit2111.perfectplaces.service.PlaceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
+//@RequestMapping(value = "/v1/place")
 public class PlaceController {
+
+    @Autowired
+    private PlaceService placeService;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public @ResponseBody Place getPlace()
@@ -35,4 +38,10 @@ public class PlaceController {
         return place;
     }
 
+    @RequestMapping(value = "/v1/place", params = "id", method = RequestMethod.GET)
+    public @ResponseBody Place getPlcaeById(@RequestParam("id") long id)
+    {
+        Place place = placeService.getPlace(id);
+        return place;
+    }
 }

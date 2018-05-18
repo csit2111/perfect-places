@@ -2,36 +2,42 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "comment")
-public class Comment {
+public class Comment  implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
 
+    @Column(name = "description")
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "id", insertable = false, updatable = false)
     private Place place;
 
+    @Column(name = "rate_value")
     private int rateValue;
 
-    @OneToOne
-    //@JoinTable(name = "place")
-    @JoinColumn(name = "id")
+    @OneToOne(mappedBy = "commentId")
+    //@JoinTable(name = "place"
+   // @Column(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private User userId;
+
+    public Comment() {
+    }
+
 
     public Comment(String description, Place place, int rateValue, User userId) {
         this.description = description;
         this.place = place;
         this.rateValue = rateValue;
         this.userId = userId;
-    }
-
-    public Comment() {
     }
 
     public String getDescription() {

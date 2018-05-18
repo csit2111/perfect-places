@@ -1,19 +1,21 @@
 package com.csit2111.perfectplaces.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "place_type")
-public class PlaceType {
+public class PlaceType implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
 
+    @Column(name = "place_type")
     private String name;
 
     @OneToOne(mappedBy = "typeId")
-    PlaceTag tag;
+    private PlaceTag tag;
 
     public PlaceType() {
     }

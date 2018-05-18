@@ -31,6 +31,11 @@ public class PlaceServiceImpl implements PlaceService {
        return placeRepository.findPlaceByName(name);
     }*/
 
+    public Place getPlace(long id)
+    {
+        return  placeRepository.getOne(id);
+    }
+
     @Override
     public Place editPlace(Place place) {
         return placeRepository.saveAndFlush(place);

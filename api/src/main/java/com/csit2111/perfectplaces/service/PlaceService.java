@@ -7,6 +7,7 @@ import java.util.Collection;
 public interface PlaceService {
     Place addPlace(Place place);
     void deletePlace(long id);
+    Place getPlace(long id);
    // Place getPlaceByName(String name);
     Place editPlace(Place place);
     Collection<Place>getAll();

@@ -2,18 +2,20 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "region")
-public class Region {
+public class Region implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
+   // @GeneratedValue
+    private long id;
 
     @OneToOne(mappedBy = "regionId")
     private Place place;
 
+    @Column(name = "name")
     private String name;
 
     public Region() {

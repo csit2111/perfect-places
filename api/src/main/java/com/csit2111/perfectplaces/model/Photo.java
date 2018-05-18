@@ -2,15 +2,17 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "photo")
-public class Photo {
+public class Photo implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
 
+    @Column(name = "image_path")
     private String imagePath;
 
     @ManyToOne

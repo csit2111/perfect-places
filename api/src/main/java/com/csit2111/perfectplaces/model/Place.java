@@ -2,34 +2,41 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 @Table(name = "place")
-public class Place {
+public class Place implements Serializable {
 
     @Id
     @GeneratedValue
     private  long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Region regionId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private PlaceTag tagId;
 
-    private  float latitude;
+    @Column(name = "lat")
+    private  float lat;
 
-    private  float longitude;
+    @Column(name = "lon")
+    private  float lon;
 
+    @Column(name = "contacts")
     private String contacts;
 
+    @Column(name = "link")
     private String link;
 
     @OneToMany(mappedBy = "place")
@@ -46,8 +53,8 @@ public class Place {
         this.description = description;
         this.regionId = regionId;
         this.tagId = tagId;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.lat = latitude;
+        this.lon = longitude;
         this.contacts = contacts;
         this.link = link;
         this.comments = comments;
@@ -95,19 +102,19 @@ public class Place {
     }
 
     public float getLatitude() {
-        return latitude;
+        return lat;
     }
 
     public void setLatitude(float latitude) {
-        this.latitude = latitude;
+        this.lat = latitude;
     }
 
     public float getLongitude() {
-        return longitude;
+        return lon;
     }
 
     public void setLongitude(float longitude) {
-        this.longitude = longitude;
+        this.lon = longitude;
     }
 
     public String getContacts() {

@@ -2,22 +2,24 @@ package com.csit2111.perfectplaces.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "place_tag")
-public class PlaceTag {
+public class PlaceTag implements Serializable {
 
     @Id
-    @GeneratedValue
+   // @GeneratedValue
     private long id;
 
+    @Column(name = "name")
     private String name;
 
     @OneToOne
     @JoinColumn(name = "id")
     private PlaceType typeId;
 
-    @OneToOne(mappedBy = "tagId")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "tagId")
     private Place place;
 
     public PlaceTag() {
