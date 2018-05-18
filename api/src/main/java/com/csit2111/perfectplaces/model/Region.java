@@ -1,6 +1,8 @@
 package com.csit2111.perfectplaces.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -31,6 +33,7 @@ public class Region {
         this.id = id;
     }
 
+    @JsonIgnore
     public Place getPlace() {
         return place;
     }

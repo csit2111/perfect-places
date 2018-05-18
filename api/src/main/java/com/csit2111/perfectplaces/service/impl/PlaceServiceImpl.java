@@ -6,7 +6,9 @@ import com.csit2111.perfectplaces.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class PlaceServiceImpl implements PlaceService {
@@ -26,10 +28,15 @@ public class PlaceServiceImpl implements PlaceService {
         placeRepository.deleteById(id);
     }
 
-    /*@Override
-    public Place getPlaceByName(String name) {
-       return placeRepository.findPlaceByName(name);
-    }*/
+    @Override
+    public Place getPlaceById(long id) {
+        List<Long> ids = new ArrayList<>();
+        ids.add(id);
+        List<Place> places = placeRepository.findAllById(ids);
+        if (places.isEmpty())
+            return new Place();
+        return places.get(0);
+    }
 
     @Override
     public Place editPlace(Place place) {
@@ -37,7 +44,8 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public Collection<Place> getAll() {
+    public List<Place> getAll() {
+        Collection<Place> t = placeRepository.findAll();
         return placeRepository.findAll();
     }
 }

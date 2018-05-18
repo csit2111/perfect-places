@@ -1,6 +1,8 @@
 package com.csit2111.perfectplaces.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,7 +22,6 @@ public class Comment {
     private int rateValue;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "userId")
     private User user;
 
@@ -50,6 +51,7 @@ public class Comment {
         this.description = description;
     }
 
+    @JsonIgnore
     public Place getPlace() {
         return place;
     }

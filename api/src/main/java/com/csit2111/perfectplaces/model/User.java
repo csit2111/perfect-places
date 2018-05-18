@@ -1,6 +1,8 @@
 package com.csit2111.perfectplaces.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -63,6 +65,7 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public Comment getComment() {
         return comment;
     }

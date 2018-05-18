@@ -1,5 +1,7 @@
 package com.csit2111.perfectplaces.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -39,6 +41,7 @@ public class PlaceType {
         this.name = name;
     }
 
+    @JsonIgnore
     public PlaceTag getTag() {
         return tag;
     }

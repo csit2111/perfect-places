@@ -1,6 +1,8 @@
 package com.csit2111.perfectplaces.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -36,6 +38,7 @@ public class Photo {
         this.imagePath = imagePath;
     }
 
+    @JsonIgnore
     public Place getPlace() {
         return place;
     }

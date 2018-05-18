@@ -1,15 +1,27 @@
 package com.csit2111.perfectplaces.controller;
 
 import com.csit2111.perfectplaces.model.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.csit2111.perfectplaces.service.PlaceService;
+import com.csit2111.perfectplaces.service.impl.PlaceServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
 public class PlaceController {
+    @Autowired
+    private PlaceService placeService;
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public @ResponseBody List<Place> getAllPlaces() {
+        return placeService.getAll();
+    }
+
+    @RequestMapping(value = "/places/id", method = RequestMethod.GET)
+    public @ResponseBody Place getAllPlaces(@RequestParam("id") long id) {
+        return placeService.getPlaceById(id);
+    }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public @ResponseBody Place getPlace()
@@ -20,14 +32,14 @@ public class PlaceController {
         place.setId(1);
         Region region = new Region("Саратовская область");
         region.setId(64);
-        place.setRegionId(region);
+        place.setRegion(region);
         PlaceTag tag = new PlaceTag();
-        place.setTagId(tag);
+        place.setTag(tag);
         place.setLatitude(51.5332f);
         place.setLongitude(46.0192f);
         place.setContacts("ул. Кирова, д. 8");
         Collection<Photo> p = new ArrayList<Photo>();
-        Photo photo = new Photo("https://turisticum.ru/img/saratov_1/881_2.jpg");
+        Photo photo = new Photo();
         p.add(photo);
         place.setPhotos(p);
         Collection<Comment> comments = new ArrayList<Comment>();
