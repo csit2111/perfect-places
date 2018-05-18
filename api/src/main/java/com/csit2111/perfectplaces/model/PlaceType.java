@@ -12,7 +12,7 @@ public class PlaceType {
 
     private String name;
 
-    @OneToOne(mappedBy = "typeId")
+    @OneToOne(mappedBy = "type")
     PlaceTag tag;
 
     public PlaceType() {

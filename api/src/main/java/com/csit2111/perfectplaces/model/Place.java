@@ -10,19 +10,21 @@ public class Place {
 
     @Id
     @GeneratedValue
-    private  long id;
+    private long id;
 
     private String name;
 
     private String description;
 
     @OneToOne
-    @JoinColumn(name = "id")
-    private Region regionId;
+    @MapsId
+    @JoinColumn(name = "regionId")
+    private Region region;
 
     @OneToOne
-    @JoinColumn(name = "id")
-    private PlaceTag tagId;
+    @MapsId
+    @JoinColumn(name = "tagId")
+    private PlaceTag tag;
 
     private  float latitude;
 
@@ -35,17 +37,17 @@ public class Place {
     @OneToMany(mappedBy = "place")
     private Collection<Comment> comments;
 
-    @OneToMany(mappedBy = "placeId")
+    @OneToMany(mappedBy = "place")
     private Collection<Photo> photos;
 
     public Place() {
     }
 
-    public Place(String name, String description, Region regionId, PlaceTag tagId, float latitude, float longitude, String contacts, String link, Collection<Comment> comments, Collection<Photo> photos) {
+    public Place(String name, String description, Region region, PlaceTag tag, float latitude, float longitude, String contacts, String link, Collection<Comment> comments, Collection<Photo> photos) {
         this.name = name;
         this.description = description;
-        this.regionId = regionId;
-        this.tagId = tagId;
+        this.region = region;
+        this.tag = tag;
         this.latitude = latitude;
         this.longitude = longitude;
         this.contacts = contacts;
@@ -62,14 +64,6 @@ public class Place {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getName() {
         return name;
     }
@@ -78,20 +72,28 @@ public class Place {
         this.name = name;
     }
 
-    public Region getRegionId() {
-        return regionId;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRegionId(Region regionId) {
-        this.regionId = regionId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public PlaceTag getTagId() {
-        return tagId;
+    public Region getRegion() {
+        return region;
     }
 
-    public void setTagId(PlaceTag tagId) {
-        this.tagId = tagId;
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public PlaceTag getTag() {
+        return tag;
+    }
+
+    public void setTag(PlaceTag tag) {
+        this.tag = tag;
     }
 
     public float getLatitude() {

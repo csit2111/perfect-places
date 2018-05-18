@@ -14,15 +14,10 @@ public class Photo {
     private String imagePath;
 
     @ManyToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
-    private Place placeId;
+    @JoinColumn(name = "placeId")
+    private Place place;
 
     public Photo() {
-    }
-
-    public Photo(String imagePath) {
-        this.imagePath = imagePath;
-        //this.placeId = placeId;
     }
 
     public long getId() {
@@ -42,10 +37,10 @@ public class Photo {
     }
 
     public Place getPlace() {
-        return placeId;
+        return place;
     }
 
-    public void setPlace(Place placeId) {
-        this.placeId = placeId;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 }
