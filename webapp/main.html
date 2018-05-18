@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>PerfectPlaces</title>
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	
+	<body>
+		<header>
+			<p><a name="main_anchor"></a></p>
+			<div class="container">
+				<div class="heading clearfix">
+					
+					<nav>
+						<ul class="menu">
+							<li>
+								<a href="#main_anchor">Главная</a>
+							</li>
+							<li>
+								<a href="#">Рекомендуемое</a>
+							</li>
+							<li>
+								<a href="#">Категории</a>
+							</li>
+							<li>
+								<a href="#map_anchor">Все на карте</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="titles">
+					<h1>
+						Perfect Places
+					</h1>
+					<div class="titles_first">
+						Твой личный помощник в путешествиях
+					</div>
+				</div>
+				<a class="button" href="#"></a>
+			</div>
+		</header>
+		
+		<section id="map_section">
+			<p><a name="map_anchor"></a></p>
+			<div class="container clearfix">							
+				<div class="title">				
+					<h2>
+						Все на карте <hr>
+					</h2>
+				</div>
+				<div id="map"></div>
+					<script>
+						function initMap() 
+						{
+							var uluru = {lat: 51.5344022, lng: 46};
+							var map = new google.maps.Map(document.getElementById('map'), 
+							{
+								zoom: 6,
+								center: uluru
+							});
+							var marker = new google.maps.Marker(
+							{
+								position: uluru,
+								map: map
+							});
+						}
+					</script>
+					<script async defer
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpgh8aI10AsG660V9T2Qe8EW2Xq5qqLbg&callback=initMap">
+					</script>
+			</div>
+		</section>
+				
+		<footer>
+			<div class="container clearfix">
+				<div class="footer">
+					&copy Perfect Places, 2018
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

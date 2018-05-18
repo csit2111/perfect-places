@@ -1,0 +1,122 @@
+body {
+	background-color: #FFFAFA;
+	color: black;
+	font-family: Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+.clearfix:after {
+	content: '';
+	display: table;
+	width: 100%;
+	clear: both;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+header {
+	background: url(../img/main_pic.jpg) no-repeat center top / cover;
+	height: 100vh;
+}
+
+.container {
+	width: 980px;
+	margin: 0 auto;
+}
+
+nav {
+	float: right;
+	margin-top: 20px;
+}
+
+.menu {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+.menu li {
+	float: left;
+	display: block;
+	margin-right: 40px;
+}
+
+.menu li a {
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+
+.titles_first {
+	color: #000000;
+	font-size: 20px;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 30px;
+}
+
+h1 {
+	color: #000000;
+	font-size: 68px;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 0;
+	margin-top: 250px;
+}
+
+.button {
+	background: url(../img/Google_play.png) no-repeat;
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	bottom: 50px;
+	right: calc(100vw / 2);
+}
+
+#map_section {
+	background: url(../img/map_section_pic.png) no-repeat center top / cover;
+}
+
+.title {
+	padding-top: 30px;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.title h2 {
+	font-size: 34px;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+}
+
+.title hr {
+	border: none;
+	background-color: black;
+	color: black;
+	height: 2px;
+	width: 50px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+#map {
+	height: 500px;
+	width: 980px;
+	background-color: gray;
+	margin-bottom: 30px;
+}
+
+.footer {
+	font-size: 12px;
+	text-align: center;
+	margin: 3px;
+}
