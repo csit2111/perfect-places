@@ -1,0 +1,75 @@
+package ru.startandroid.develop.p1391googlemaps;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
+
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+
+public class MainActivity extends FragmentActivity {
+
+	SupportMapFragment mapFragment;
+	GoogleMap map;
+	final String TAG = "myLogs";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		mapFragment = (SupportMapFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.map);
+		map = mapFragment.getMap();
+		if (map == null) {
+			finish();
+			return;
+		}
+		init();
+	}
+
+	private void init() {
+		map.setOnMapClickListener(new OnMapClickListener() {
+
+			@Override
+			public void onMapClick(LatLng latLng) {
+				Log.d(TAG, "onMapClick: " + latLng.latitude + ","
+						+ latLng.longitude);
+			}
+		});
+
+		map.setOnMapLongClickListener(new OnMapLongClickListener() {
+
+			@Override
+			public void onMapLongClick(LatLng latLng) {
+				Log.d(TAG, "onMapLongClick: " + latLng.latitude + ","
+						+ latLng.longitude);
+			}
+		});
+
+		map.setOnCameraChangeListener(new OnCameraChangeListener() {
+
+			@Override
+			public void onCameraChange(CameraPosition camera) {
+				Log.d(TAG, "onCameraChange: " + camera.target.latitude + ","
+						+ camera.target.longitude);
+			}
+		});
+	}
+
+	public void onClickTest(View view) {
+		CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(
+				new LatLngBounds(new LatLng(-39, 112), new LatLng(-11, 154)),
+				100);
+		map.animateCamera(cameraUpdate);
+	}
+}
