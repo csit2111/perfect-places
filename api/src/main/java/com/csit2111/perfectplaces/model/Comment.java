@@ -21,7 +21,7 @@ public class Comment {
 
     private int rateValue;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 

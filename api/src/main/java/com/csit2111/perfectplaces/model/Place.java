@@ -18,11 +18,11 @@ public class Place {
 
     private String description;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "regionId")
     private Region region;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tagId")
     private PlaceTag tag;
 

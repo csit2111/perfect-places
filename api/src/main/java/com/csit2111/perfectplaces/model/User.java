@@ -4,6 +4,7 @@ package com.csit2111.perfectplaces.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "user")
@@ -19,13 +20,13 @@ public class User {
 
     private String email;
 
-    @OneToOne(mappedBy = "user")
-    private Comment comment;
+    @OneToMany(mappedBy = "user")
+    private Collection<Comment>  comment;
 
     public User() {
     }
 
-    public User(String login, String password, String email, Comment comment) {
+    public User(String login, String password, String email, Collection<Comment>  comment) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -66,11 +67,11 @@ public class User {
     }
 
     @JsonIgnore
-    public Comment getComment() {
+    public Collection<Comment>  getComment() {
         return comment;
     }
 
-    public void setComment(Comment comment) {
+    public void setComment(Collection<Comment>  comment) {
         this.comment = comment;
     }
 }

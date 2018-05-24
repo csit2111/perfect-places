@@ -4,6 +4,7 @@ package com.csit2111.perfectplaces.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "region")
@@ -13,8 +14,8 @@ public class Region {
     @GeneratedValue
     private long id;
 
-    @OneToOne(mappedBy = "region")
-    private Place place;
+    @OneToMany(mappedBy = "region")
+    private Collection<Place> place;
 
     private String name;
 
@@ -34,11 +35,11 @@ public class Region {
     }
 
     @JsonIgnore
-    public Place getPlace() {
+    public Collection<Place> getPlace() {
         return place;
     }
 
-    public void setPlace(Place place) {
+    public void setPlace(Collection<Place> place) {
         this.place = place;
     }
 

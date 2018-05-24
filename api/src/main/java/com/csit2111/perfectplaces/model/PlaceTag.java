@@ -2,6 +2,7 @@ package com.csit2111.perfectplaces.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "place_tag")
@@ -13,17 +14,17 @@ public class PlaceTag {
 
     private String name;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "typeId")
     private PlaceType type;
 
-    @OneToOne(mappedBy = "tag")
-    private Place place;
+    @OneToMany(mappedBy = "tag")
+    private Collection<Place> place;
 
     public PlaceTag() {
     }
 
-    public PlaceTag(String name, PlaceType type, Place place) {
+    public PlaceTag(String name, PlaceType type, Collection<Place> place) {
         this.name = name;
         this.type = type;
         this.place = place;
@@ -54,11 +55,11 @@ public class PlaceTag {
     }
 
     @JsonIgnore
-    public Place getPlace() {
+    public Collection<Place> getPlace() {
         return place;
     }
 
-    public void setPlace(Place place) {
+    public void setPlace(Collection<Place> place) {
         this.place = place;
     }
 }
