@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@CrossOrigin
 @RestController
 public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody List<Place> getAllPlaces() {
         return placeService.getAll();
     }
 
-    @RequestMapping(value = "/places/id", method = RequestMethod.GET)
+    @RequestMapping(value = "/places/id", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Place getAllPlaces(@RequestParam("id") long id) {
         return placeService.getPlaceById(id);
     }
