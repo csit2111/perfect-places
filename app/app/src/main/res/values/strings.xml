@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Perfect Places</string>
+    <string name="email">Email-адрес</string>
+    <string name="password">Пароль</string>
+    <string name="password_confirm">Подтвердите пароль</string>
+    <string name="username">Имя пользователя</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_place_info">PlaceInfo</string>
+    <string name="title_activity_map_all">Map</string>
+</resources>
