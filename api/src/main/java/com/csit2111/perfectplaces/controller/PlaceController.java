@@ -4,12 +4,14 @@ import com.csit2111.perfectplaces.model.*;
 import com.csit2111.perfectplaces.service.PlaceService;
 import com.csit2111.perfectplaces.service.impl.PlaceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @CrossOrigin
 @RestController
+@SessionAttributes("id")
 public class PlaceController {
     @Autowired
     private PlaceService placeService;
@@ -46,6 +48,18 @@ public class PlaceController {
         Collection<Comment> comments = new ArrayList<Comment>();
         place.setComments(comments);
         return place;
+    }
+
+    @RequestMapping(value = "/pages/id", method = RequestMethod.GET)
+    public String getWebPlace(@RequestParam("id") long id, ModelMap model)
+    {
+        Place place = placeService.getPlaceById(id);
+        model.addAttribute("id", place.getId());
+        model.addAttribute("name", place.getName());
+        model.addAttribute("description", place.getDescription());
+        model.addAttribute("contacts", place.getContacts());
+        model.addAttribute("comments", place.getComments());
+        return "id";
     }
 
 }
