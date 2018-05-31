@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="0dp"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:background="@null">
+    <EditText
+        android:id="@+id/txtEmail2"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Введите название места, город и т.д."
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        android:elevation="5dp"
+        android:translationZ="10dp" />
+
+    <ImageView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:src="@drawable/imgtop_home"
+        android:id="@+id/imageTop"
+        android:scaleType="centerCrop"
+
+        android:layout_weight=".3"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:elevation="5dp"
+        android:translationZ="10dp"
+        android:onClick="showPlaceList"
+        />
+
+    <ImageView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:src="@drawable/imgcat_home"
+        android:id="@+id/imageCategory"
+        android:scaleType="centerCrop"
+
+        android:layout_weight=".33"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:elevation="5dp"
+        android:translationZ="10dp"
+        />
+
+    <ImageView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:src="@drawable/imgmap_home"
+        android:id="@+id/imageMap"
+        android:scaleType="centerCrop"
+
+        android:layout_weight=".3"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:elevation="5dp"
+        android:translationZ="10dp"
+        android:onClick="showMapAll"
+        />
+</LinearLayout>
+
