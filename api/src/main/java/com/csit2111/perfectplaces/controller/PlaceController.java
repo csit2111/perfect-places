@@ -1,7 +1,9 @@
 package com.csit2111.perfectplaces.controller;
 
 import com.csit2111.perfectplaces.model.*;
+import com.csit2111.perfectplaces.service.CommentService;
 import com.csit2111.perfectplaces.service.PlaceService;
+import com.csit2111.perfectplaces.service.UserService;
 import com.csit2111.perfectplaces.service.impl.PlaceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +16,29 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody List<Place> getAllPlaces() {
         return placeService.getAll();
     }
 
-    @RequestMapping(value = "/places/id", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody Place getAllPlaces(@RequestParam("id") long id) {
+    @RequestMapping(value = "/places/{id}", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody Place getPlaceById(@PathVariable long id) {
         return placeService.getPlaceById(id);
+    }
+
+    @RequestMapping(value = "/places/{id}", method = RequestMethod.POST)
+    public @ResponseBody Comment getPlaceById(@PathVariable long id, @RequestBody Comment comment) {
+        comment.setId(0);
+        comment.setPlace(getPlaceById(id));
+        comment.setUser(userService.getUserById(1));
+        comment = commentService.addComment(comment);
+        return comment;
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)

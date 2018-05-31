@@ -6,4 +6,5 @@ public interface UserService {
     User addUser(User user);
     void deleteUser(long id);
     User editUser(User user);
+    User getUserById(long id);
 }
